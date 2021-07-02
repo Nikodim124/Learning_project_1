@@ -1,0 +1,160 @@
+﻿<!doctype html>
+<html>
+	<head>
+	    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	    <title>ПРОЕКТ ПО УЧЕБНОЙ ПРАКТИКЕ</title>
+	    <link rel="stylesheet" href="css/styles.css" type="text/css">
+	    <link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+	</head>
+    <body>
+		<div class="sidebar">
+		    <header><a href="https://pspu.ru"><img src="images/Group.png" alt="ПГГПУ" height="150px"></a></header>
+		    <ul>
+			    <li><a class="current" href="index.htm">Главная</a></li>
+			    <li><a href="teor.htm">Теория</a></li>
+			    <li><a href="prac.htm">Практика</a></li>
+			    <li><a href="avt.htm">Авторы</a></li>
+	    	</ul>
+   		</div>
+   		<div class="content">
+   			<div class="head">ПРОЕКТ ПО УЧЕБНОЙ ПРАКТИКЕ</div>
+   			<div class="text">
+   				<p>Как известно, Data Scientist is The Sexiest Job of the 21st Century, а машинное обучение и анализ данных - это захватывающие области, знакомство с которыми точно не оставит вас равнодушными!</p>
+   				<p>В данном проекте используется язык <b>Python</b>, его библиотеки для анализа данных - <b>Pandas</b>, <b>Seaborn</b> и <b>Matplotlib</b>, а также такой метод машинного обучения, как <b>деревья решений</b>. С помощью этих инструментов удалось построить предиктивную модель, которая предсказывает пол клиента, основываясь на его транзакционных исторических данных. Для более чёткой цели решено было взять точность предсказания не ниже <b>80%</b>. Своей задачей я ставил формирование комплекса теоретических знаний и методологических основ в области предиктивного моделирования данных, а также практических навыков, обеспечивающих решение широкого круга задач с использованием статистических методов.</p>
+   				<p>Для задания были использованы обезличенные транзакционные банковские данные.</p>
+   				<div class="markdown">
+   					<span>
+   						<details class="text-cell-section-header">
+   							<summary class="open-text">Описание данных</summary>
+   							<span class="table">Таблица <code class="table-name">transactions.csv</code>
+   							</span>
+   							<p class="desc">Описание</p>
+   							<p class="desc-text">Таблица содержит историю транзакций клиентов банка за один год и три месяца.</p>
+   							<p class="desc">Формат данных</p>
+   							<div class="format">
+   								<span>
+   									<span class="mtk1">customer_id,tr_datetime,mcc_code,tr_type,amount,term_id
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">111111,15&nbsp;01:40:52,1111,1000,-5224,111111111112,15&nbsp;15:18:32,3333,2000,-100,11122233
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">...
+   									</span>
+   								</span>
+   							</div>
+   							<p class="desc">Описание полей</p>
+   							<ul class="spisok">
+   								<li><code class="format">customer_id</code> — идентификатор клиента;</li>
+   								<li><code class="format">tr_datetime</code> — день и время совершения транзакции (дни нумеруются с начала данных);</li>
+   								<li><code class="format">mcc_code</code> — mcc-код транзакции;</li>
+   								<li><code class="format">tr_type</code> — тип транзакции;</li>
+   								<li><code class="format">amount</code> — сумма транзакции в условных единицах со знаком; <code>+</code> — начисление средств клиенту (приходная транзакция), <code>-</code> — списание средств (расходная транзакция);</li>
+   								<li><code class="format">term_id</code> — идентификатор терминала.</li>
+   							</ul>
+   							<span class="table">Таблица <code class="table-name">gender_train.csv</code>
+   							</span>
+   							<p class="desc">Описание</p>
+   							<p class="desc-text">Данная таблица содержит информацию по полу для части клиентов, для которых он известен. Для остальных клиентов пол неизвестен.</p>
+   							<p class="desc">Формат данных</p>
+   							<div class="format">
+   								<span>
+   									<span class="mtk1">customer_id,gender
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">111111,0
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">111112,1
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">...
+   									</span>
+   								</span>
+   							</div>
+   							<p class="desc">Описание полей</p>
+   							<ul class="spisok">
+   								<li><code class="format">customer_id</code> — идентификатор клиента;</li>
+   								<li><code class="format">gender</code> — пол клиента.</li>
+   							</ul>
+   							<span class="table">Таблица <code class="table-name">tr_mcc_codes.csv</code>
+   							</span>
+   							<p class="desc">Описание</p>
+   							<p class="desc-text">Данная таблица содержит описание mcc-кодов транзакций.</p>
+   							<p class="desc">Формат данных</p>
+   							<div class="format">
+   								<span>
+   									<span class="mtk1">mcc_code;mcc_description
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">1000;словесное&nbsp;описание&nbsp;mcc-кода&nbsp;1000
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">2000;словесное&nbsp;описание&nbsp;mcc-кода&nbsp;2000
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">...
+   									</span>
+   								</span>
+   							</div>
+   							<p class="desc">Описание полей</p>
+   							<ul class="spisok">
+   								<li><code class="format">mcc_code</code> – mcc-код транзакции;</li>
+   								<li><code class="format">mcc_description</code> — описание mcc-кода транзакции.</li>
+   							</ul>
+   							<span class="table">Таблица <code class="table-name">tr_types.csv</code>
+   							</span>
+   							<p class="desc">Описание</p>
+   							<p class="desc-text">Данная таблица содержит описание типов транзакций.</p>
+   							<p class="desc">Формат данных</p>
+   							<div class="format">
+   								<span>
+   									<span class="mtk1">tr_type;tr_description
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">1000;словесное&nbsp;описание&nbsp;типа&nbsp;транзакции&nbsp;1000
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">2000;словесное&nbsp;описание&nbsp;типа&nbsp;транзакции&nbsp;2000
+   									</span>
+   								</span>
+   								<br>
+   								<span>
+   									<span class="mtk1">...
+   									</span>
+   								</span>
+   							</div>
+   							<p class="desc">Описание полей</p>
+   							<ul class="spisok">
+   								<li><code class="format">tr_type</code> — тип транзакции;</li>
+   								<li><code class="format">tr_description</code> — описание типа транзакции;</li>
+   							</ul>
+   						</details>
+   					</span>
+   				</div>
+   				<p>На стадии подготовки данных были проанализированы основные категории трат с целью установить чёткую принадлежность конкретного класса с определённому полу клиентов. После всех манипуляций была создана и обучена модель для предсказания данных классов. Основная практическая цель данной работы – это извлечение полезных для бизнеса сведений из больших массивов информации, выявление закономерностей, разработка и проверка гипотез путем моделирования.</p>
+   			</div>
+  </body>
+</html>

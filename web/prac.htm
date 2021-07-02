@@ -1,0 +1,213 @@
+﻿<!doctype html>
+<html>
+  <head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+      <title>ПРОЕКТ ПО УЧЕБНОЙ ПРАКТИКЕ</title>
+      <link rel="stylesheet" href="css/styles.css" type="text/css">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  </head>
+    <body>
+    <div class="sidebar">
+        <header><a href="https://pspu.ru"><img src="images/Group.png" alt="ПГГПУ" height="150px"></a></header>
+        <ul>
+          <li><a href="index.htm">Главная</a></li>
+          <li><a href="teor.htm">Теория</a></li>
+          <li><a class="current" href="prac.htm">Практика</a></li>
+          <li><a href="avt.htm">Авторы</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="head">ПРОЕКТ ПО УЧЕБНОЙ ПРАКТИКЕ</div>
+        <div class="text">
+          <p>В рамках задания необходимо предсказывать пол клиента, основываясь на его транзакционных исторических данных. В роли метрики выступает <b>ROC AUC(площадь под кривой ошибок)</b>. Площадь под ROC-кривой – один из самых популярных функционалов качества в задачах бинарной классификации. Это удобно в нашем случае, так как у нас всего два класса {0; 1}.</p>
+          <p>Ранее было выделено ровно три параметра для обучения модели. Разумеется, они все имеют разный вес в итоговом результате и выдают результаты с различной точностью.</p>
+          <p>Использованы стандратные параметры для древовидной модели:</p>
+          <ul class="circ">
+            <li>• eta - скорость обучения</li>
+            <li>• max_depth - максимальная глубина дерева</li>
+            <li>• subsample - доля объектов обучающей выборки, используемых на каждой итерации</li>
+            <li>• colsample_bytree - доля переменных, используемых при построении каждого дерева</li>
+            <li>• gamma - минимальное уменьшение значения функции потерь</li>
+            <li>• lambda - аналог регрессии Риджа - применяется для борьбы с избыточностью данных, когда независимые переменные коррелируют друг с другом, вследствие чего проявляется неустойчивость оценок коэффициентов многомерной линейной регрессии</li>
+            <li>• alpha - аналог регрессии Лассо - не позволяет независимым переменным обращаться в ноль</li>
+            <li>• min_child_weight - минимальное количество наблюдений в листе дерева</li>
+          </ul>
+        </div>
+        <div class="chec">
+            <p class="des">Ниже можно проследить вклад каждого параметра в итоговую модель, а также ознакомиться с наиболее важными характеристиками.</p>
+            <p class="des">Выберите параметры:</p>
+            <label class="ch1">
+              <input type="checkbox" class="chb">
+              <span class="fake"></span>
+              <span class="ft">Числовые данные транзакций</span>
+            </label>
+            <label class="ch2">
+              <input type="checkbox" class="chb">
+              <span class="fake"></span>
+              <span class="ft">Время транзакций</span>
+            </label>
+            <label class="ch3">
+              <input type="checkbox" class="chb">
+              <span class="fake"></span>
+              <span class="ft">Тип транзакций</span>
+            </label>
+            <br>
+            <button onclick="func();"/>Построить</button>
+            <div id="pgh1"> 
+              <p class="pgh1">ROC AUC: <b>62,6%</b></p>
+              <img src="images/amount.png">
+            </div>
+            <div id="pgh2"> 
+              <p class="pgh2">ROC AUC: <b>62,5%</b></p>
+              <img src="images/hour.png">
+            </div>
+            <div id="pgh3"> 
+              <p class="pgh2">ROC AUC: <b>86,6%</b></p>
+              <img src="images/code.png" usemap="#cmap">
+                <map name="cmap">
+                  <area id="area1" shape="rect" coords="0,30,600,75" nohref title="Магазины косметики">
+                  <area shape="rect" coords="0,85,600,130" nohref="" title="Станции техобслуживания">
+                  <area shape="rect" coords="0,140,600,185" nohref="" title="Аптеки">
+                  <area shape="rect" coords="0,195,600,240" nohref="" title="Автозапчасти и аксессуары">
+                  <area shape="rect" coords="0,250,600,295" nohref="" title="Обувные магазины">
+                  <area shape="rect" coords="0,305,600,350" nohref="" title="Продажа электронного оборудования">
+                  <area shape="rect" coords="0,360,600,405" nohref="" title="Готовая женская одежда">
+                  <area shape="rect" coords="0,415,600,460" nohref="" title="Звонки с использованием телефонов, считывающих магнитную ленту">
+                  <area shape="rect" coords="0,470,600,515" nohref="" title="Лесо- и строительный материал">
+                  <area shape="rect" coords="0,525,600,570" nohref="" title="Легковой и грузовой транспорт">
+                </map>
+            </div>
+            <div id="pgh4"> 
+              <p class="pgh2">ROC AUC: <b>68,2%</b></p>
+              <img src="images/hour_amount.png">
+            </div>
+            <div id="pgh5"> 
+              <p class="pgh2">ROC AUC: <b>87,0%</b></p>
+              <img src="images/code_hour.png" usemap="#chmap">
+                <map name="chmap">
+                  <area id="area1" shape="rect" coords="0,30,600,75" nohref title="Магазины косметики">
+                  <area shape="rect" coords="0,85,600,130" nohref="" title="Автозапчасти и аксессуары">
+                  <area shape="rect" coords="0,140,600,185" nohref="" title="Продажа электронного оборудования">
+                  <area shape="rect" coords="0,195,600,240" nohref="" title="Станции техобслуживания">
+                  <area shape="rect" coords="0,250,600,295" nohref="" title="Аптеки">
+                  <area shape="rect" coords="0,360,600,405" nohref="" title="Готовая женская одежда">
+                  <area shape="rect" coords="0,360,600,405" nohref="" title="Обувные магазины">
+                  <area shape="rect" coords="0,470,600,515" nohref="" title="Одежда для всей семьи">
+                  <area shape="rect" coords="0,525,600,570" nohref="" title="Звонки с использованием телефонов, считывающих магнитную ленту">
+                </map>
+            </div>
+            <div id="pgh6"> 
+              <p class="pgh2">ROC AUC: <b>87,8%</b></p>
+              <img src="images/code_amount_hour.png" usemap="#cahmap">
+                <map name="cahmap">
+                  <area id="area1" shape="rect" coords="0,30,600,75" nohref title="Магазины косметики">
+                  <area shape="rect" coords="0,85,600,130" nohref="" title="Автозапчасти и аксессуары">
+                  <area shape="rect" coords="0,140,600,185" nohref="" title="Станции техобслуживания">
+                  <area shape="rect" coords="0,195,600,240" nohref="" title="Аптеки">
+                  <area shape="rect" coords="0,250,600,295" nohref="" title="Обувные магазины">
+                  <area shape="rect" coords="0,305,600,350" nohref="" title="Готовая женская одежда">
+                  <area shape="rect" coords="0,360,600,405" nohref="" title="Продажа электронного оборудования">
+                  <area shape="rect" coords="0,470,600,515" nohref="" title="Галереи/учреждения видеоигр">
+                  <area shape="rect" coords="0,525,600,570" nohref="" title="Лесо- и строительный материал">
+                </map>
+            </div>
+            <div id="pgh7"> 
+              <p class="pgh2">ROC AUC: <b>87,4%</b></p>
+              <img src="images/code_amount.png" usemap="#camap">
+                <map name="camap">
+                  <area id="area1" shape="rect" coords="0,30,600,75" nohref title="Магазины косметики">
+                  <area shape="rect" coords="0,85,600,130" nohref="" title="Автозапчасти и аксессуары">
+                  <area shape="rect" coords="0,140,600,185" nohref="" title="Звонки с использованием телефонов, считывающих магнитную ленту">
+                  <area shape="rect" coords="0,195,600,240" nohref="" title="Готовая женская одежда">
+                  <area shape="rect" coords="0,250,600,295" nohref="" title="Станции техобслуживания">
+                  <area shape="rect" coords="0,305,600,350" nohref="" title="Аптеки">
+                  <area shape="rect" coords="0,360,600,405" nohref="" title="Обувные магазины">
+                  <area shape="rect" coords="0,415,600,460" nohref="" title="Продажа электронного оборудования">
+                  <area shape="rect" coords="0,525,600,570" nohref="" title="Галереи/учреждения видеоигр">
+                </map>
+            </div>
+        </div>
+        <div class="text">
+          <p class="last">В итоге мы получили рабочую модель, которая хорошо справляется с поставленной задачей, а именно - определяет верно пол клиента по историческим транзакционным данным с точностью свыше 80%. Данная модель может быть использована в любых других задачах бинарной классификации.</p>
+        </div>
+        <script>
+             function func()
+             {
+                var chb = document.getElementsByClassName('chb');
+                if(chb[0].checked && !chb[1].checked && !chb[2].checked)
+                {
+                  document.getElementById('pgh1').style.display = 'block';
+                  document.getElementById('pgh2').style.display = 'none';
+                  document.getElementById('pgh3').style.display = 'none';
+                  document.getElementById('pgh4').style.display = 'none';
+                  document.getElementById('pgh5').style.display = 'none';
+                  document.getElementById('pgh6').style.display = 'none';
+                  document.getElementById('pgh7').style.display = 'none';
+                }
+                if(!chb[0].checked && chb[1].checked && !chb[2].checked)
+                {
+                  document.getElementById('pgh1').style.display = 'none';
+                  document.getElementById('pgh2').style.display = 'block';
+                  document.getElementById('pgh3').style.display = 'none';
+                  document.getElementById('pgh4').style.display = 'none';
+                  document.getElementById('pgh5').style.display = 'none';
+                  document.getElementById('pgh6').style.display = 'none';
+                  document.getElementById('pgh7').style.display = 'none';
+                }
+                if(!chb[0].checked && !chb[1].checked && chb[2].checked)
+                {
+                  document.getElementById('pgh1').style.display = 'none';
+                  document.getElementById('pgh2').style.display = 'none';
+                  document.getElementById('pgh3').style.display = 'block';
+                  document.getElementById('pgh4').style.display = 'none';
+                  document.getElementById('pgh5').style.display = 'none';
+                  document.getElementById('pgh6').style.display = 'none';
+                  document.getElementById('pgh7').style.display = 'none';
+                }
+                if(chb[0].checked && chb[1].checked && !chb[2].checked)
+                {
+                  document.getElementById('pgh1').style.display = 'none';
+                  document.getElementById('pgh2').style.display = 'none';
+                  document.getElementById('pgh3').style.display = 'none';
+                  document.getElementById('pgh4').style.display = 'block';
+                  document.getElementById('pgh5').style.display = 'none';
+                  document.getElementById('pgh6').style.display = 'none';
+                  document.getElementById('pgh7').style.display = 'none';
+                }
+                if(!chb[0].checked && chb[1].checked && chb[2].checked)
+                {
+                  document.getElementById('pgh1').style.display = 'none';
+                  document.getElementById('pgh2').style.display = 'none';
+                  document.getElementById('pgh3').style.display = 'none';
+                  document.getElementById('pgh4').style.display = 'none';
+                  document.getElementById('pgh5').style.display = 'block';
+                  document.getElementById('pgh6').style.display = 'none';
+                  document.getElementById('pgh7').style.display = 'none';
+                }
+                if(chb[0].checked && chb[1].checked && chb[2].checked)
+                {
+                  document.getElementById('pgh1').style.display = 'none';
+                  document.getElementById('pgh2').style.display = 'none';
+                  document.getElementById('pgh3').style.display = 'none';
+                  document.getElementById('pgh4').style.display = 'none';
+                  document.getElementById('pgh5').style.display = 'none';
+                  document.getElementById('pgh6').style.display = 'block';
+                  document.getElementById('pgh7').style.display = 'none';
+                }
+                if(chb[0].checked && !chb[1].checked && chb[2].checked)
+                {
+                  document.getElementById('pgh1').style.display = 'none';
+                  document.getElementById('pgh2').style.display = 'none';
+                  document.getElementById('pgh3').style.display = 'none';
+                  document.getElementById('pgh4').style.display = 'none';
+                  document.getElementById('pgh5').style.display = 'none';
+                  document.getElementById('pgh6').style.display = 'none';
+                  document.getElementById('pgh7').style.display = 'block';
+                }
+              }
+        </script>
+      </div>
+  </body>
+</html>

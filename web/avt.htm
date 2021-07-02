@@ -1,0 +1,78 @@
+﻿<!doctype html>
+<html>
+  <head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+      <title>ПРОЕКТ ПО УЧЕБНОЙ ПРАКТИКЕ</title>
+      <link rel="stylesheet" href="css/styles.css" type="text/css">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  </head>
+    <body onload="go();">
+    <div class="sidebar">
+        <header><a href="https://pspu.ru"><img src="images/Group.png" alt="ПГГПУ" height="150px"></a></header>
+        <ul>
+          <li><a href="index.htm">Главная</a></li>
+          <li><a href="teor.htm">Теория</a></li>
+          <li><a href="prac.htm">Практика</a></li>
+          <li><a class="current" href="avt.htm">Авторы</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="head">ПРОЕКТ ПО УЧЕБНОЙ ПРАКТИКЕ</div>
+        <div class="text">
+          <div class="char">АВТОР РАБОТЫ</div>
+          <div id="blob">
+            <div id="image"></div>
+          </div>
+          <span class="name">
+            <h1 class="ntitle">Косарев Владислав Юрьевич</h1>
+            <p class="row1">факультет информатики и экономики
+            </p>
+            <p>3 курс, группа Z1233
+            </p>
+            </span>
+          </span>
+        </div>
+      </div>
+      <script>
+        var rotation = 0;
+        var btn = document.querySelector('#btn');
+
+        function create() {
+          rotation +=40;
+          var b = document.querySelector('#blob');
+          
+          var r1 = random(24, 75);
+          var r2 = random(24, 75);
+          var r3 = random(24, 75);
+          var r4 = random(24, 75);
+          
+          var r11 = remain(r1);
+          var r22 = remain(r2);
+          var r33 = remain(r3);
+          var r44 = remain(r4);
+          
+          var coordinates = `${r1}% ${r11}% ${r22}% ${r2}% / ${r3}% ${r4}% ${r44}% ${r33}%`;
+          b.style['border-radius'] = coordinates;
+          
+          b.style['transform'] = 'rotate(' + rotation + 'deg)';
+          
+          image.style.setProperty('--r', -rotation + 'deg');
+          btn.innerText = coordinates;
+        };
+
+        function random(min, max) {
+          return Math.floor(min + Math.random() * (max - min));
+        }
+
+        function remain(n) {
+          return 100 - n;
+        }
+        
+        function go() {
+          nIntervId = setInterval(create, 2000);
+        }
+      </script>
+  </body>
+</html>
